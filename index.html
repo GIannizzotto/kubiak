@@ -1,0 +1,336 @@
+<!-- <?php
+$error = '';
+
+if (isset($_POST['sendemail'])){
+  $name       = htmlspecialchars($_POST['form-name']);
+  $email      = htmlspecialchars($_POST['form-email']);
+  $subjet     = htmlspecialchars($_POST['form-subjet']);
+  $comment    = htmlspecialchars($_POST['form-comment']);
+
+  if ($name === "" || $email === "" || $subjet === "" ||  $comment === "") {
+    $error .= '<div class="alert alert-warning">Complete todos los campos</div>';
+  } else {
+    ini_set('sendmail_from','info@kubiakleather.com');
+
+    //print_r($_POST);
+    $destinatario = "info@kubiakleather.com";
+    // $asunto = 'Kubiak Leather Info - Web';
+
+
+      // CABECERAS
+    $cabeceras = "From: Kubiak Leather - Web\r\n";
+    $cabeceras .= "CCO: info@kubiakleather.com\r\n";
+    $cabeceras .= "MIME-Version: 1.0\r\n";
+    $cabeceras .= "Content-type: text/html; charset=iso-8859-1\r\n";
+
+      // CABECERAS EXTRAS
+    $cabeceras .= "Reply-To: info@kubiakleather.com\r\n";
+    $cabeceras .= "X-Mailer: PHP/".phpversion();
+    $cabeceras .= "X-Priority: 1\n";
+
+      // MENSAJE
+      // MENSAJE
+      $mensaje .= "<table border='0'>";
+      $mensaje .= "<tr>
+          <td colspan='2'>-----------------------------------------------------------------</td>
+        </tr>";
+      $mensaje .= "<tr>
+          <td colspan='2'><strong>Kubiak Leather - WEB</strong></td>
+        </tr>";
+      $mensaje .= "<tr>
+          <td colspan='2'>-----------------------------------------------------------------</td>
+        </tr>";
+      $mensaje .= "<tr>
+          <td><strong>Nombre:</strong></td>
+          <td>".$name."</td>
+        </tr>";
+      $mensaje .= "<tr>
+          <td><strong>Email:</strong></td>
+          <td>".$email."</td>
+        </tr>";
+      $mensaje .= "<tr>
+          <td><strong>Comentario:</strong></td>
+          <td>".$comment."</td>
+        </tr>";
+      $mensaje .= "</table>";
+
+    $texto = utf8_decode($mensaje);
+
+    require('mail/PHPMailerAutoload.php');
+
+    $mail = new PHPMailer;
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+        )
+    );
+    $mail->isSMTP();    // Set mailer to use SMTP
+    $mail->Host = 'a2plcpnl0583.prod.iad2.secureserver.net';    // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;  // Enable SMTP authentication
+    $mail->Username = 'info@kubiakleather.com';    // SMTP username
+    $mail->Password = 'CuerosKubiak@2019';    // SMTP password
+    $mail->SMTPSecure = 'ssl';  // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 465;  // TCP port to connect to
+
+    $mail->setFrom('--');
+    $mail->addAddress($destinatario); // Add a recipient
+    
+    $mail->isHTML(true);     // Set email format to HTML
+    $mail->Subject = $subjet;
+    $mail->Body    = $mensaje;
+
+    if(!$mail->send()) {
+      $error .= '<div class="alert alert-warning">No se ha enviado su mail, intente nuevamente.</div>';
+    } else {
+      $error .= '<div class="alert alert-success">Se ha enviado su mail, en breve nos comunicaremos con usted. ¡Gracias!</div>';
+      unset($_POST);
+    }
+  }
+} -->
+
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kubiak Leather</title>
+
+  <!-- posicionamiento -->
+  <meta name="description" content="Mayorista de artículos en cueros, con los mejores precios del mercado internacional para Argentina, Chile y Perú - Santiago de Chile.">
+  <meta name="author" content="Diseño: Norberto Selasco, Desarrollo web: Gustavo Antonio Iannizzotto">
+  <meta name="summary" content="Mayorista de artículos en cueros, Santiago de Chile">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="artículos caninos, artículos de cuero, correas, bozales, bolsos caninos, cinturones, pretales, ropa, mascotas, argentina, perú, chile, santiago de chile">
+
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="css/slick.css" type="text/css">
+  <link rel="stylesheet" href="css/slick-theme.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/lightbox.css" type="text/css">
+  <link rel="stylesheet" href="css/pagecrossfade.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css?ver=1.0" type="text/css">
+  <link rel="stylesheet" href="css/responsive.css?ver=1.0" type="text/css">
+  <link rel="icon" href="images/fav.png?ver=1.0" type="image/png">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle x collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <h1>
+          <a class="navbar-brand link" href="index.php">KUBIAK<span>LEATHER</span></a>
+        </h1>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav">
+          <li><a href="#" id="link-leathers">Marroquinería</a></li>
+          <li><a href="#" id="link-pets">Mascotas</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+
+
+      </div>
+      <!-- /.navbar-collapse -->
+
+      <ul class="sidebar-menu side-leathers">
+        <li><a href="belts.html" class="link">Cinturones</a></li>
+        <li><a href="handbags.html" class="link">Bolsos</a></li>
+      </ul>
+
+      <ul class="sidebar-menu side-pets">
+        <li><a href="muzzles.html" class="link">Bozales</a></li>
+        <li><a href="necklaces.html" class="link">Collares</a></li>
+        <li><a href="harness.html" class="link">Pretales</a></li>
+        <li><a href="straps.html" class="link">Correas</a></li>
+        <li><a href="clothes.html" class="link">Ropa</a></li>
+      </ul>
+
+    </div><!-- /.container-fluid -->
+  </nav>
+  <!-- NAV -->
+
+  <!-- MODAL NAV -->
+  <div class="modal-nav"></div>
+  <!-- MODAL NAV -->
+
+  <!-- HEADER -->
+  <header class="container">
+    <div class="row">
+      <div class="heading-image col-sm-6">
+      </div>
+      <div class="heading-text col-sm-6">
+        <p>Los mejores <span class="typing"></span></p>
+        <p>Para tu negocio</p>
+        <p>¡Prepara tu negocio con los mejores productos de cuero con garantía de compra al mejor precio internacional!</p>
+      </div>
+    </div>
+  </header>
+  <!-- HEADER -->
+
+  <!-- MAIN -->
+  <main role="main" class="main">
+    <div class="container">
+      <div class="row">
+
+        <!-- SLIDER -->
+        <div class="slider">
+          <div class="slider-content">
+            <h3>Transportadora MT</h3>
+            <p>Bolso transportador realizado en diferentes telas, 4 tamaños.</p>
+            <img src="images/handbags/33906300000.jpg" class="img-responsive" alt="imagen de producto">
+            <a href="handbags.html#33906300000" class="btn btn-primary link">ver producto</a>
+          </div>
+
+          <div class="slider-content">
+            <h3>Collar halti</h3>
+            <p>Realizado en polipropileno reforzado.</p>
+            <img src="images/necklaces/44106200020.jpg" class="img-responsive" alt="imagen de producto">
+            <a href="necklaces.html#44106200020" class="btn btn-primary link">ver producto</a>
+          </div>
+
+          <div class="slider-content">
+            <h3>Collar cuero con puas</h3>
+            <p>Collar de cuero de 2,5cm de ancho con puas y ojalillos.</p>
+            <img src="images/necklaces/22108255500.jpg" class="img-responsive" alt="imagen de producto">
+            <a href="necklaces.html#22108255500" class="btn btn-primary link">ver producto</a>
+          </div>
+
+          <div class="slider-content">
+            <h3>Bozal canasta grande</h3>
+            <p>Bozal de cuero canasta reforzado grande.</p>
+            <img src="images/muzzles/22307800200.jpg" class="img-responsive" alt="imagen de producto">
+            <a href="muzzles.html#22307800200" class="btn btn-primary link">ver producto</a>
+          </div>
+
+          <div class="slider-content">
+            <h3>Correa de cuero bordada</h3>
+            <p>Correa de cuero 2,5cm x 1,20mts bordada a mano.</p>
+            <img src="images/straps/22205251200.jpg" class="img-responsive" alt="imagen de producto">
+            <a href="straps.html#22205251200" class="btn btn-primary link">ver producto</a>
+          </div>
+
+          <div class="slider-content">
+            <h3>Collar doble nylon</h3>
+            <p>Collar reforzado de polipropileno de 4cm de ancho, desde 50cm hasta 80cm de largo.</p>
+            <img src="images/necklaces/44106406500(1).jpg" class="img-responsive" alt="imagen de producto">
+            <a href="necklaces.html#44106406500" class="btn btn-primary link">ver producto</a>
+          </div>
+        </div>
+        <!-- SLIDER -->
+
+      </div>
+    </div>
+  </main>
+  <!-- MAIN -->
+
+  <!-- BANNER -->
+  <section class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="banner-content">
+          <p class="text-1">contamos con más de</p>
+          <p class="text-2">100</p>
+          <p class="text-3">productos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- BANNER -->
+
+  <div class="line-separator">
+    <div class="line"></div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="welcome col-md-6">
+          <h2>Bienvenido</h2>
+          <p>Nuestro negocio se ocupa principalmente del éxito tu negocio ofreciéndote los mejores productos en cuero y al mejor precio mayorista para la reventa en tu negocio. Vendemos únicamente a países como Perú, Chile y Argentina con total garantía y atención.</p>
+          <div class="argentina-contact">
+            <h3>Argentina</h3>
+            <p><span>Dirección:</span> Manuel Trelles 17726 - C.A.B.A.</p>
+            <a class="whatsapp" href="https://wa.me/5491137993001" target="_blank">
+              <span>Tel: </span>
+              <span>+54 9 11 3799-3001</span>
+              <img src="images/main/whatsapp-logo.svg" alt="whatsapp logo">
+            </a>
+          </div>
+          <div class="chile-contact">
+            <h3>Chile</h3>
+            <p><span>Dirección:</span> Callao 3037 - Las Condes - Santiago</p>
+            <a class="whatsapp" href="https://wa.me/56944800469" target="_blank">
+              <span>Tel: </span>
+              <span>+56 9 4480-0469</span>
+              <img src="images/main/whatsapp-logo.svg" alt="whatsapp logo">
+            </a>
+          </div>
+          <a href="mailto:info@kubiakleather.com"><span>Email:</span> info@kubiakleather.com</a>
+        </div>
+
+        <div class="contact-form col-md-6">
+          <h2>Hagamos negocios</h2>
+          <div class="form-content">
+            <form class="form-horizontal" action="index.php#contact" method="POST" name="sendemail" id="sendemail" onsubmit="return validation()">
+              <div class="form-group name">
+                <input type="text" class="form-control name" name="form-name" id="form-name" placeholder="Nombre completo">
+              </div>
+              <div class="form-group email">
+                <input type="text" class="form-control email" name="form-email" id="form-email" placeholder="E-mail">
+              </div>
+              <div class="form-group subjet">
+                <input type="text" class="form-control subjet" name="form-subjet" id="form-subjet" placeholder="Asunto">
+              </div>
+              <div class="form-group message">
+                <textarea class="form-control message" name="form-comment"  id="form-comment" placeholder="Mensaje"></textarea>
+              </div>
+              <div class="form-group submit">
+                <input type="submit" class="btn btn-enviar" name="sendemail" value="ENVIAR MENSAJE">
+              </div>
+            </form>
+          </div>
+          <?php echo $error; ?>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- CONTACT -->
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <p><span>KUBIAK</span>LEATHER todos los derechos reservados &copy;</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="js/validation.js?ver=1.0" type="text/javascript"></script>
+  <script src="js/typed.min.js" type="text/javascript"></script>
+  <script src="js/slick.min.js" type="text/javascript"></script>
+  <script src="js/pagecrossfade-min.js" type="text/javascript"></script>
+  <script src="js/main.js?ver=1.0" type="text/javascript"></script>
+
+</body>
+</html>
